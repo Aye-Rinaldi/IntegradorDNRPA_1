@@ -48,7 +48,7 @@ public class Registro {
     public void listaTipoAutomotor(String automotor){
         List<Automotor> listaAutomotores = null;
         for (Automotor au:automotores){
-            if (au.getClass().getSimpleName().equals("Automotor")){
+            if (au.getClass().getSimpleName().equals("automotor")){
                 Auto a = (Auto) au;
                 listaAutomotores.add(a);
                 System.out.println(listaAutomotores);
