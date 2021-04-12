@@ -39,12 +39,17 @@ public class Registro {
     }
 
     //Lista de todos los automotores
-    public void listarAutomotores(){
-        for (Automotor automotor:automotores)
-            System.out.println(automotor);
+    public void listarAutomotores(Automotor automotor){
+        /*
+        imprime todosssss
+        for (Automotor a:automotores)
+            System.out.println(a);
+         */
+        System.out.println(automotor); //solo imprime el objeto que paso por parametro
     }
 
     //Lista segun tipo de automotor que desee verr
+    /*
     public void listaTipoAutomotor(String automotor){
         List<Automotor> listaAutomotores = null;
         for (Automotor au:automotores){
@@ -58,6 +63,24 @@ public class Registro {
         }
 
     }
+
+     */
+
+
+    public void listarAutos(){
+        for (Automotor au:automotores){
+            if (au instanceof Auto){
+                Auto auto = (Auto) au;
+                listarAutomotores(auto);
+            }
+
+        }
+    }
+
+
+
+
+
 
 
 

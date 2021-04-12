@@ -1,7 +1,9 @@
 package ar.com.xeven;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Dnrpa {
 
@@ -19,12 +21,40 @@ public class Dnrpa {
 
         Registro registro = new Registro();
 
-        registro.agregarMuchosAutomotores();
+        //registro.agregarMuchosAutomotores();
         //registro.listarAutomotores();
 
 
-        //1) Listar todos los autos registrados en todas las seccionales
-        registro.listaTipoAutomotor("Auto");
+
+
+        Scanner sc = new Scanner(System.in);
+
+        int opcion;
+
+        do {
+            System.out.println("\n\nBIENVENIDO A LA DIRECCION NACIONAL DE REGISTRO PROPIEDAD DEL AUTOMOTOR");
+            System.out.println("===========================================================================");
+            System.out.println("1.Listado de todos los autos registrados en todas las seccionales.");
+
+            System.out.println("5.Salir");
+            System.out.print("Introduzca una opcion: ");
+            opcion = Integer.parseInt(sc.nextLine());
+
+            switch (opcion){
+
+                case 1:
+                    System.out.println("\n***Listado de todos los autos registrados***");
+                    System.out.println();
+                    registro.agregarMuchosAutomotores();
+                    registro.listarAutos();
+                    break;
+                default:
+
+
+            }
+
+
+        } while (opcion != 5);
 
 
 
