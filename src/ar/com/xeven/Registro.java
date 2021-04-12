@@ -1,15 +1,14 @@
 package ar.com.xeven;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Registro {
     //atributos
-    private List<IAutomotor> automotores = new ArrayList<>();
+    private List<Automotor> automotores = new ArrayList<>();
 
     //constructores
-    public Registro(List<IAutomotor> automotores) {
+    public Registro(List<Automotor> automotores) {
         this.automotores = automotores;
     }
 
@@ -17,17 +16,16 @@ public class Registro {
     }
 
     //getters y setters
-    public List<IAutomotor> getAutomotores() {
+    public List<Automotor> getAutomotores() {
         return automotores;
     }
 
-    public void setAutomotores(List<IAutomotor> automotores) {
+    public void setAutomotores(List<Automotor> automotores) {
         this.automotores = automotores;
     }
 
     //metodos
-    /*
-    public void agregarAutomor(IAutomotor automotor){
+    public void agregarAutomor(Automotor automotor){
         automotores.add(automotor);
     }
 
@@ -40,13 +38,28 @@ public class Registro {
         agregarAutomor(new Camion("Camion",new Persona("Carlos",45678910,"San Martin 460"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
     }
 
-
+    //Lista de todos los automotores
     public void listarAutomotores(){
-        for (IAutomotor automotor:automotores)
+        for (Automotor automotor:automotores)
             System.out.println(automotor);
     }
 
-     */
+    //Lista segun tipo de automotor que desee verr
+    public void listaTipoAutomotor(String automotor){
+        List<Automotor> listaAutomotores = null;
+        for (Automotor au:automotores){
+            if (au.getClass().getSimpleName().equals("Automotor")){
+                Auto a = (Auto) au;
+                listaAutomotores.add(a);
+                System.out.println(listaAutomotores);
+            }
+
+
+        }
+
+    }
+
+
 
 
 

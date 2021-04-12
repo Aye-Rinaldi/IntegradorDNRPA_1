@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Dnrpa {
 
+
+
     public static void main(String[] args) {
 
         //List<Registro> registrosSeccionales = new ArrayList<>();
@@ -17,22 +19,16 @@ public class Dnrpa {
 
         Registro registro = new Registro();
 
-        //registro.agregarMuchosAutomotores();
+        registro.agregarMuchosAutomotores();
+        //registro.listarAutomotores();
 
 
         //1) Listar todos los autos registrados en todas las seccionales
+        registro.listaTipoAutomotor("Auto");
 
 
-        List<IAutomotor> automotores = new ArrayList<>();
 
-        for (IAutomotor a:automotores){
-            if (a instanceof Auto) {
-                Auto au = (Auto) a;
-                au.agregarMuchosAutomotores();
-                au.listarAutomotores();
 
-            }
-        }
 
 
 
