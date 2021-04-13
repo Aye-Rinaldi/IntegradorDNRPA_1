@@ -2,7 +2,7 @@ package ar.com.xeven;
 
 import javax.swing.*;
 
-public class Persona {
+public class Persona implements Comparable<Persona>{
 
     //atributos
     private String nombre;
@@ -49,5 +49,11 @@ public class Persona {
                 ", dni=" + dni +
                 ", direccion='" + direccion + '\'' +
                 '}';
+    }
+
+
+    @Override
+    public int compareTo(Persona o) {
+        return nombre.compareTo(o.getNombre());
     }
 }

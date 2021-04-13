@@ -35,7 +35,7 @@ public class Dnrpa {
             System.out.println("\n\nBIENVENIDO A LA DIRECCION NACIONAL DE REGISTRO PROPIEDAD DEL AUTOMOTOR");
             System.out.println("===========================================================================");
             System.out.println("1.Listado de todos los autos registrados en todas las seccionales.");
-
+            System.out.println("2.Listado de todos los propietarios de camiones en orden alfabetico.");
             System.out.println("5.Salir");
             System.out.print("Introduzca una opcion: ");
             opcion = Integer.parseInt(sc.nextLine());
@@ -47,6 +47,12 @@ public class Dnrpa {
                     System.out.println();
                     registro.agregarMuchosAutomotores();
                     registro.listarAutos();
+                    break;
+                case 2:
+                    System.out.println("\n***Listado de todos los propietarios de camiones en orden alfabetico***");
+                    System.out.println();
+                    registro.agregarMuchosAutomotores();
+                    registro.listarCamiones();
                     break;
                 default:
                     System.out.println("Introduzca una opcion correcta");

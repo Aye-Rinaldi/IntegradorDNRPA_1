@@ -1,11 +1,13 @@
 package ar.com.xeven;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Registro {
     //atributos
     private List<Automotor> automotores = new ArrayList<>();
+    private List<Automotor> camiones = new ArrayList<>();
 
     //constructores
     public Registro(List<Automotor> automotores) {
@@ -66,7 +68,6 @@ public class Registro {
 
      */
 
-
     public void listarAutos(){
         for (Automotor au:automotores){
             if (au instanceof Auto){
@@ -77,14 +78,25 @@ public class Registro {
         }
     }
 
+    //CAMIONES
+    public void agregarCamion(Automotor automotor){
+        camiones.add(automotor);
+    }
 
+    public void listarCamiones(){
+        for (Automotor au:automotores){
+            if (au instanceof Camion){
+                Camion camion = (Camion) au;
+                agregarCamion(camion);
+            }
+        }
+        System.out.println("Listado de todos los propietarios de camiones: ");
+        Collections.sort(camiones, (p1,p2) -> p1.getPropietario().getNombre().compareTo(p2.getPropietario().getNombre()));
 
-
-
-
-
-
-
+        for (Automotor camion:camiones){
+            listarAutomotores(camion);
+        }
+    }
 
 
 
