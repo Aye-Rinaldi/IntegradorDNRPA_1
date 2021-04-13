@@ -49,6 +49,8 @@ public class Dnrpa {
                     registro.listarAutos();
                     break;
                 default:
+                    System.out.println("Introduzca una opcion correcta");
+                    break;
 
 
             }
