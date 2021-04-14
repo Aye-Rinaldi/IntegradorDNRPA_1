@@ -10,5 +10,7 @@ public class Auto extends Automotor implements IVehiculoACombustion{
     public Auto() {
     }
 
-
+    public Auto(Patente patente, String competencia, Persona propietario, String provincia, String localidad) {
+        super(patente, competencia, propietario, provincia, localidad);
+    }
 }

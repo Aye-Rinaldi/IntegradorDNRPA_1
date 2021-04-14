@@ -23,6 +23,7 @@ public  class Automotor{
     protected String color;
     protected int potencia;
     protected LocalDate fechaRegistroPropietario;
+    protected Patente patente;
 
 
 
@@ -39,6 +40,14 @@ public  class Automotor{
     }
 
     public Automotor() {
+    }
+
+    public Automotor(Patente patente,String competencia,Persona propietario,String provincia,String localidad) {
+        this.patente = patente;
+        this.competencia = competencia;
+        this.propietario = propietario;
+        this.provincia = provincia;
+        this.localidad = localidad;
     }
 
     //getters y setters
@@ -131,11 +140,22 @@ public  class Automotor{
         this.fechaRegistroPropietario = fechaRegistroPropietario;
     }
 
+
+    //PATENTE
+    public Patente getPatente() {
+        return patente;
+    }
+
+    public void setPatente(Patente patente) {
+        this.patente = patente;
+    }
+
     //toString
     @Override
     public String toString() {
         return
-                "Competencia='" + competencia + '\'' +
+                "Patente='"+ patente + '\'' +
+                ", Competencia='" + competencia + '\'' +
                 ", Propietario=" + propietario +
                 ", Uso=" + uso +
                 ", Provincia='" + provincia + '\'' +
@@ -144,6 +164,7 @@ public  class Automotor{
                 ", Modelo='" + modelo + '\'' +
                 ", Anio='" + anio + "\n";
     }
+
 
 
 }
