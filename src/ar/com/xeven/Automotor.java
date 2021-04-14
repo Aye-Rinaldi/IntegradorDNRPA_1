@@ -7,13 +7,10 @@ import java.util.List;
 
 public  class Automotor{
     //atributos
+    protected Integer idCP;
     protected String competencia;
     protected Persona propietario;
-    //private List<Persona> autorizados;
-    /*
-    desp poner como boolean pa q en caso de que tenga autorizados, se los agregue una lista
-    ver a lo ultimo
-     */
+    protected List<Persona> autorizados;
     protected Uso uso;
     protected String provincia;
     protected String localidad;
@@ -28,7 +25,8 @@ public  class Automotor{
 
 
     //constructor
-    public Automotor(String competencia, Persona propietario, Uso uso, String provincia, String localidad, String marca, String modelo, String anio) {
+    public Automotor(Integer idCP,String competencia, Persona propietario, Uso uso, String provincia, String localidad, String marca, String modelo, String anio) {
+        this.idCP = idCP;
         this.competencia = competencia;
         this.propietario = propietario;
         this.uso = uso;
@@ -42,7 +40,8 @@ public  class Automotor{
     public Automotor() {
     }
 
-    public Automotor(Patente patente,String competencia,Persona propietario,String provincia,String localidad) {
+    public Automotor(Integer idCP,Patente patente,String competencia,Persona propietario,String provincia,String localidad) {
+        this.idCP = idCP;
         this.patente = patente;
         this.competencia = competencia;
         this.propietario = propietario;
@@ -140,6 +139,21 @@ public  class Automotor{
         this.fechaRegistroPropietario = fechaRegistroPropietario;
     }
 
+    public Integer getIdCP() {
+        return idCP;
+    }
+
+    public void setIdCP(Integer idCP) {
+        this.idCP = idCP;
+    }
+
+    public List<Persona> getAutorizados() {
+        return autorizados;
+    }
+
+    public void setAutorizados(List<Persona> autorizados) {
+        this.autorizados = autorizados;
+    }
 
     //PATENTE
     public Patente getPatente() {

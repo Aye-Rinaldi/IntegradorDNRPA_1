@@ -17,6 +17,13 @@ public class Patente {
         this.tercerasDosLetras = generarUltimasDosLetras();
     }
 
+    //AGREGAR PATENTES A MANO
+    public Patente(String primerasDosLetras, String segundosNumeros, String tercerasDosLetras) {
+        this.primerasDosLetras = primerasDosLetras;
+        this.segundosNumeros = segundosNumeros;
+        this.tercerasDosLetras = tercerasDosLetras;
+    }
+
     //getters y setters
     public String getPrimerasDosLetras() {
         return primerasDosLetras;

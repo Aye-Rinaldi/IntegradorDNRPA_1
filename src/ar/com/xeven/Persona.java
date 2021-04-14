@@ -11,6 +11,10 @@ public class Persona implements Comparable<Persona>{
 
     //constructor
     public Persona(String nombre, Integer dni, String direccion) {
+        setNombre(nombre);
+        setNombre(direccion);
+        setDni(dni);
+
         this.nombre = nombre;
         this.dni = dni;
         this.direccion = direccion;
@@ -22,7 +26,14 @@ public class Persona implements Comparable<Persona>{
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (Utilitaria.validarString(nombre,20))
+            this.nombre = nombre;
+        else
+            try {
+                throw new DatosIncorrectosException("Nombre incorrecto");
+            } catch (DatosIncorrectosException e) {
+                e.printStackTrace();
+            }
     }
 
     public Integer getDni() {
@@ -30,7 +41,13 @@ public class Persona implements Comparable<Persona>{
     }
 
     public void setDni(Integer dni) {
-        this.dni = dni;
+        if (Utilitaria.validarDni(dni))
+            this.dni = dni;
+        else try {
+            throw new DatosIncorrectosException("El DNI debe tener 8 digitos");
+        } catch (DatosIncorrectosException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getDireccion() {
@@ -38,7 +55,14 @@ public class Persona implements Comparable<Persona>{
     }
 
     public void setDireccion(String direccion) {
-        this.direccion = direccion;
+        if (Utilitaria.validarString(direccion,20))
+            this.direccion = direccion;
+        else
+            try {
+                throw new DatosIncorrectosException("Direccion incorrecta");
+            } catch (DatosIncorrectosException e) {
+                e.printStackTrace();
+            }
     }
 
 
