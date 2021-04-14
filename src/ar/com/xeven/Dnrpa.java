@@ -36,7 +36,9 @@ public class Dnrpa {
             System.out.println("===========================================================================");
             System.out.println("1.Listado de todos los autos registrados en todas las seccionales.");
             System.out.println("2.Listado de todos los propietarios de camiones en orden alfabetico.");
-            System.out.println("5.Salir");
+            System.out.println("3.Gestion para cambiar de propietario");
+            System.out.println("4.Alta de automotor");
+            System.out.println("0.Salir");
             System.out.print("Introduzca una opcion: ");
             opcion = Integer.parseInt(sc.nextLine());
 
@@ -53,6 +55,11 @@ public class Dnrpa {
                     System.out.println();
                     registro.agregarMuchosAutomotores();
                     registro.listarCamiones();
+                    break;
+                case 3:
+                    System.out.println("\n***Gestion de cambio  de propietario***");
+                    Automotor automotor = null;
+                    registro.cambiarElPropietario(automotor);
                     break;
                 default:
                     System.out.println("Introduzca una opcion correcta");
@@ -72,5 +79,7 @@ public class Dnrpa {
 
 
     }
+
+
 
 }

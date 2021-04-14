@@ -2,25 +2,28 @@ package ar.com.xeven;
 
 import org.omg.CORBA.PRIVATE_MEMBER;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public  class Automotor{
     //atributos
-    private String competencia;
-    private Persona propietario;
+    protected String competencia;
+    protected Persona propietario;
     //private List<Persona> autorizados;
     /*
     desp poner como boolean pa q en caso de que tenga autorizados, se los agregue una lista
     ver a lo ultimo
      */
-    private Uso uso;
-    private String provincia;
-    private String localidad;
-    private String marca;
-    private String modelo;
-    private String anio;
-    private String color;
-    private int potencia;
+    protected Uso uso;
+    protected String provincia;
+    protected String localidad;
+    protected String marca;
+    protected String modelo;
+    protected String anio;
+    protected String color;
+    protected int potencia;
+    protected LocalDate fechaRegistroPropietario;
+
 
 
     //constructor
@@ -120,6 +123,14 @@ public  class Automotor{
         this.competencia = competencia;
     }
 
+    public LocalDate getFechaRegistroPropietario() {
+        return fechaRegistroPropietario;
+    }
+
+    public void setFechaRegistroPropietario(LocalDate fechaRegistroPropietario) {
+        this.fechaRegistroPropietario = fechaRegistroPropietario;
+    }
+
     //toString
     @Override
     public String toString() {
@@ -133,7 +144,6 @@ public  class Automotor{
                 ", Modelo='" + modelo + '\'' +
                 ", Anio='" + anio + "\n";
     }
-
 
 
 }

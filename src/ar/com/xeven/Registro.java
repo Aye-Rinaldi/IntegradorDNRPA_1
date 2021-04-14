@@ -1,8 +1,12 @@
 package ar.com.xeven;
 
+import java.security.AuthProvider;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Registro {
     //atributos
@@ -98,7 +102,47 @@ public class Registro {
         }
     }
 
+    public void cambiarElPropietario(Automotor automotor){
 
+        //buscar por patente, ver cuando haga las patentes
+
+
+        if (pasoUnAnio()){
+            System.out.println("No se puede cambiar de propietario, porque aun no ha pasado un año desde el ultimo cammbio");
+        } else {
+            String nuevoNombre = "";
+            automotor.getPropietario().setNombre(nuevoNombre);
+            Integer nuevoDni = null;
+            automotor.getPropietario().setDni(nuevoDni);
+            String nuevaDireccion = "";
+            automotor.getPropietario().setDireccion(nuevaDireccion);
+            automotor.setFechaRegistroPropietario(LocalDate.now());
+            System.out.println("Se ha registrado correctado el cambio del nuevo propietario");
+
+        }
+    }
+
+    private boolean pasoUnAnio() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Ingrese el dia del ultimo registro de un propietario: ");
+        int ultimoDia = sc.nextInt();
+        System.out.print("Ingrese el mes del ultimo registro de un propietario: ");
+        int ultimoMes = sc.nextInt();
+        System.out.print("Ingrese el anio del ultimo registro de un propietario: ");
+        int ultimoAnio = sc.nextInt();
+        LocalDate fechaUltimoPropietario = LocalDate.of(ultimoAnio,ultimoMes,ultimoDia);
+        LocalDate fechaHoy = LocalDate.now();
+
+        Period periodo = Period.between(fechaUltimoPropietario,fechaHoy);
+
+        int cantidadDeDias = periodo.getDays();
+
+        return (cantidadDeDias>365) ? true : false;
+
+
+    }
 
 
 }
