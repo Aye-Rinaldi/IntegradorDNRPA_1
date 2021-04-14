@@ -45,7 +45,7 @@ public class Persona implements Comparable<Persona>{
     //toString
     @Override
     public String toString() {
-        return  "nombre='" + nombre + '\'' +
+        return  '{'+"nombre='" + nombre + '\'' +
                 ", dni=" + dni +
                 ", direccion='" + direccion + '\'' +
                 '}';

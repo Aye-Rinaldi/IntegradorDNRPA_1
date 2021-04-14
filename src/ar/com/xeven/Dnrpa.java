@@ -47,7 +47,8 @@ public class Dnrpa {
                 case 1:
                     System.out.println("\n***Listado de todos los autos registrados***");
                     System.out.println();
-                    registro.agregarMuchosAutomotores();
+                    //registro.agregarMuchosAutomotores();
+                    registro.agregarAutomotoresPrueba();
                     registro.listarAutos();
                     break;
                 case 2:
@@ -58,8 +59,7 @@ public class Dnrpa {
                     break;
                 case 3:
                     System.out.println("\n***Gestion de cambio  de propietario***");
-                    Automotor automotor = null;
-                    registro.cambiarElPropietario(automotor);
+
                     break;
                 default:
                     System.out.println("Introduzca una opcion correcta");

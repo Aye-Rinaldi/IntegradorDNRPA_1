@@ -42,7 +42,17 @@ public class Registro {
         agregarAutomor(new Auto("Auto",new Persona("Carolina",345678910,"Laprida 40"),Uso.PROFESIONAL,"Cordoba","Capital","Peugeot","88","2017"));
         agregarAutomor(new Camion("Camion",new Persona("Ramiro",45678910,"Illia 36"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
         agregarAutomor(new Camion("Camion",new Persona("Carlos",45678910,"San Martin 460"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
+
     }
+
+    public void agregarAutomotoresPrueba(){
+        agregarAutomor(new Auto(new Patente(),"Auto",new Persona("Charles",10111212,"Colon 200"),"Cordoba","La Falda"));
+        agregarAutomor(new Auto(new Patente(),"Auto",new Persona("Ann",12131415,"Achaval Rodriguez 40"),"Cordoba","La Calera"));
+
+
+    }
+
+
 
     //Lista de todos los automotores
     public void listarAutomotores(Automotor automotor){
@@ -54,23 +64,6 @@ public class Registro {
         System.out.println(automotor); //solo imprime el objeto que paso por parametro
     }
 
-    //Lista segun tipo de automotor que desee verr
-    /*
-    public void listaTipoAutomotor(String automotor){
-        List<Automotor> listaAutomotores = null;
-        for (Automotor au:automotores){
-            if (au.getClass().getSimpleName().equals("automotor")){
-                Auto a = (Auto) au;
-                listaAutomotores.add(a);
-                System.out.println(listaAutomotores);
-            }
-
-
-        }
-
-    }
-
-     */
 
     public void listarAutos(){
         for (Automotor au:automotores){
@@ -102,23 +95,54 @@ public class Registro {
         }
     }
 
-    public void cambiarElPropietario(Automotor automotor){
-
-        //buscar por patente, ver cuando haga las patentes
-
-
-        if (pasoUnAnio()){
-            System.out.println("No se puede cambiar de propietario, porque aun no ha pasado un año desde el ultimo cammbio");
+    public void cambiarElPropietario(Automotor automotor) throws DatosIncorrectosException {
+        Scanner scanner = new Scanner(System.in);
+        boolean isPatente = false;
+        System.out.println("Digite la patente: ");
+        String patente = scanner.nextLine();
+        if (validarPatente(patente)) {
+            System.out.println("Formato patente correcta");
         } else {
-            String nuevoNombre = "";
-            automotor.getPropietario().setNombre(nuevoNombre);
-            Integer nuevoDni = null;
-            automotor.getPropietario().setDni(nuevoDni);
-            String nuevaDireccion = "";
-            automotor.getPropietario().setDireccion(nuevaDireccion);
-            automotor.setFechaRegistroPropietario(LocalDate.now());
-            System.out.println("Se ha registrado correctado el cambio del nuevo propietario");
+            throw new DatosIncorrectosException("Formato de patente incorrecto");
+        }
 
+        for (Automotor automotor1:getAutomotores()){
+
+            if (automotor1.getPatente().equals(patente)){
+                isPatente = true;
+                System.out.print("Digite el nuevo nombre del propietario: ");
+                String nombreNuevo = scanner.nextLine();
+
+                if (pasoUnAnio()){
+                    System.out.println("No se puede cambiar de propietario, porque aun no ha pasado un año desde el ultimo cammbio");
+                } else {
+                    automotor.getPropietario().setNombre(nombreNuevo);
+                    System.out.print("Digite el nuevo DNI: ");
+                    int nuevoDni = scanner.nextInt();
+                    automotor.getPropietario().setDni(nuevoDni);
+                    System.out.print("Digite la direccion del nuevo propietario: ");
+                    String direNueva = scanner.nextLine();
+                    String nuevaDireccion = "";
+                    automotor.getPropietario().setDireccion(direNueva);
+                    automotor.setFechaRegistroPropietario(LocalDate.now());
+                    System.out.println("Se ha registrado correctado el cambio del nuevo propietario");
+
+                }
+            }
+        }
+
+
+
+
+    }
+
+    private boolean validarPatente(String patente){
+        if (patente.toString().matches("^[A-B-C]{2}[0-9]{3}[A-Z]{2}")) {
+            System.out.println("Patente valida");
+            return true;
+        } else {
+            System.out.println("Patente invalida");
+            return false;
         }
     }
 
