@@ -2,10 +2,7 @@ package ar.com.xeven;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Dnrpa {
     //atributos
@@ -16,6 +13,7 @@ public class Dnrpa {
     private Scanner sc = new Scanner(System.in);
     private Integer opcion;
     private Automotor automotor1;
+    private LocalDate fechaHoy = LocalDate.now();
 
 
     public Dnrpa() {
@@ -111,11 +109,11 @@ public class Dnrpa {
 
 
     public void agregarMuchosAutomotores(){
-        agregarAutomor(new Auto(5000,"Auto",new Persona("Adolfo",12345678,"Marcelo T de Alvear"),Uso.PARTICULAR,"Cordoba","Capital","Ford","AZ","2015"));
-        agregarAutomor(new Auto(4500,"Auto",new Persona("Margaret",23456789,"Buenos Aires 220"),Uso.PARTICULAR,"Cordoba","La Falda","Fiat","XX","2020"));
-        agregarAutomor(new Auto(4000,"Auto",new Persona("Carolina",345678910,"Laprida 40"),Uso.PROFESIONAL,"Cordoba","Capital","Peugeot","88","2017"));
-        agregarAutomor(new Camion(4200,"Camion",new Persona("Ramiro",45678910,"Illia 36"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
-        agregarAutomor(new Camion(4200,"Camion",new Persona("Carlos",45678910,"San Martin 460"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
+        agregarAutomor(new Auto(5000,new Patente(),"Auto",new Persona("Adolfo",12345678,"Marcelo T de Alvear"),Uso.PARTICULAR,"Cordoba","Capital","Ford","AZ","2015"));
+        agregarAutomor(new Auto(4500,new Patente(),"Auto",new Persona("Margaret",23456789,"Buenos Aires 220"),Uso.PARTICULAR,"Cordoba","La Falda","Fiat","XX","2020"));
+        agregarAutomor(new Auto(4000,new Patente(),"Auto",new Persona("Carolina",345678910,"Laprida 40"),Uso.PROFESIONAL,"Cordoba","Capital","Peugeot","88","2017"));
+        agregarAutomor(new Camion(4200,new Patente(),"Camion",new Persona("Ramiro",45678910,"Illia 36"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
+        agregarAutomor(new Camion(4200,new Patente(),"Camion",new Persona("Carlos",45678910,"San Martin 460"),Uso.PROFESIONAL,"Cordoba","Carlos Paz","Scania","47","2020"));
 
     }
 
@@ -195,13 +193,13 @@ public class Dnrpa {
                 int nuevoDni = scanner.nextInt();
 
 
-                if (pasoUnAnio(automotor1.fechaRegistroPropietario)){
+                if (pasoUnAnio(automotor1.fechaCambioPropiet)){
                     System.out.println("No se puede cambiar de propietario, porque aun no ha pasado un año desde el ultimo cambio");
                 } else {
                     automotor1.getPropietario().setNombre(nombreNuevo);
                     automotor1.getPropietario().setDni(nuevoDni);
                     automotor1.getPropietario().setDireccion(direNueva);
-                    automotor1.setFechaRegistroPropietario(LocalDate.now());
+                    automotor1.setFechaCambioPropiet(LocalDate.now());
                     System.out.println("Se ha registrado correctado el cambio del nuevo propietario");
 
                 }
@@ -265,18 +263,9 @@ public class Dnrpa {
         System.out.print("Indique que uso le va a dar: ");
         Uso uso = Uso.valueOf(sc.nextLine());
 
-        System.out.print("Marca: ");
-        String marca = sc.nextLine();
-
-        System.out.print("Modelo: ");
-        String modelo = sc.nextLine();
-
-        System.out.println("Anio: ");
-        String anio = sc.nextLine();
 
 
-
-        Boolean isAlta = true;
+        Boolean registrado = true;
 
         do {
             System.out.println("Ingrese el tipo de automotor que desea dar de alta: ");
@@ -293,20 +282,75 @@ public class Dnrpa {
                 case 1:
                     automotor1 = new Auto(
                             codPostal,
-                            denominacion,
+                            fechaHoy,
+                            new Patente(),
                             new Persona(nombrePropietario),
-                            uso,
-                            provincia,
-                            localidad,
-                            marca,
-                            modelo,
-                            anio);
-                    isAlta = false;
-
-
-
+                            automotor1.getFechaCambioPropiet(),
+                            uso);
+                    registrado = false;
+                    break;
+                case 2:
+                    automotor1 = new AutoElectrico(
+                            codPostal,
+                            fechaHoy,
+                            new Patente(),
+                            new Persona(nombrePropietario),
+                            automotor1.getFechaCambioPropiet(),
+                            uso
+                    );
+                    registrado = false;
+                    break;
+                case 3:
+                    automotor1 = new Camion(
+                            codPostal,
+                            fechaHoy,
+                            new Patente(),
+                            new Persona(nombrePropietario),
+                            automotor1.getFechaCambioPropiet(),
+                            uso
+                    );
+                    registrado = false;
+                    break;
+                case 4:
+                    automotor1 = new Colectivo(
+                            codPostal,
+                            fechaHoy,
+                            new Patente(),
+                            new Persona(nombrePropietario),
+                            automotor1.getFechaCambioPropiet(),
+                            uso
+                    );
+                    registrado = false;
+                    break;
+                case 5:
+                    automotor1 = new Moto(
+                            codPostal,
+                            fechaHoy,
+                            new Patente(),
+                            new Persona(nombrePropietario),
+                            automotor1.getFechaCambioPropiet(),
+                            uso
+                    );
+                    registrado = false;
+                    break;
+                case 6:
+                    automotor1 = new MotoElectrica(
+                            codPostal,
+                            fechaHoy,
+                            new Patente(),
+                            new Persona(nombrePropietario),
+                            automotor1.getFechaCambioPropiet(),
+                            uso
+                    );
+                    registrado = false;
+                    break;
+                default:
+                    System.out.println("Ingrese una opcion correcta");
             }
-        } while (isAlta);
+        } while (registrado);
+
+        todosLosAutomotores.add(automotor1);
+        System.out.println("El automotor: "+automotor1.getClass().getSimpleName()+" ha sido dado de alta.");
     }
 
 

@@ -1,7 +1,5 @@
 package ar.com.xeven;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,14 +17,15 @@ public  class Automotor{
     protected String anio;
     protected String color;
     protected int potencia;
-    protected LocalDate fechaRegistroPropietario;
+    protected LocalDate fechaCambioPropiet;
     protected LocalDate fechaAltaNuevoPropietario;
     protected Patente patente;
+    protected LocalDate fechaAltaAutomotor;
 
 
 
-    //constructor
-    public Automotor(Integer idCP,String competencia, Persona propietario, Uso uso, String provincia, String localidad, String marca, String modelo, String anio) {
+    //constructores
+    public Automotor(Integer idCP,Patente patente,String competencia, Persona propietario, Uso uso, String provincia, String localidad, String marca, String modelo, String anio) {
         this.idCP = idCP;
         this.patente = patente;
         this.competencia = competencia;
@@ -50,6 +49,16 @@ public  class Automotor{
         this.provincia = provincia;
         this.localidad = localidad;
     }
+
+    public Automotor(Integer idCP, LocalDate fechaAltaAutomotor, Patente patente,Persona propietario,LocalDate fechaCambioPropiet,Uso uso){
+        this.idCP = idCP;
+        this.fechaAltaAutomotor = fechaAltaAutomotor;
+        this.patente = patente;
+        this.propietario = propietario;
+        this.fechaCambioPropiet = fechaCambioPropiet;
+        this.uso = uso;
+    }
+
 
     //getters y setters
     public Persona getPropietario() {
@@ -133,14 +142,14 @@ public  class Automotor{
         this.competencia = competencia;
     }
 
-    public LocalDate getFechaRegistroPropietario() {
-        return fechaRegistroPropietario;
+    public LocalDate getFechaCambioPropiet() {
+        return fechaCambioPropiet;
     }
 
 
 
-    public void setFechaRegistroPropietario(LocalDate fechaRegistroPropietario) {
-        this.fechaRegistroPropietario = fechaRegistroPropietario;
+    public void setFechaCambioPropiet(LocalDate fechaCambioPropiet) {
+        this.fechaCambioPropiet = fechaCambioPropiet;
     }
 
     public Integer getIdCP() {
