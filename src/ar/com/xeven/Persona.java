@@ -15,9 +15,10 @@ public class Persona implements Comparable<Persona>{
         setNombre(direccion);
         setDni(dni);
 
-        this.nombre = nombre;
-        this.dni = dni;
-        this.direccion = direccion;
+    }
+
+    public Persona(String nombre) {
+        setNombre(nombre);
     }
 
     //setters y getters

@@ -13,6 +13,9 @@ public class Dnrpa {
     private int idCp = 1;
     private List<Automotor> todosLosAutomotores = new ArrayList<>();
     private List<Automotor> losCamiones = new ArrayList<>();
+    private Scanner sc = new Scanner(System.in);
+    private Integer opcion;
+    private Automotor automotor1;
 
 
     public Dnrpa() {
@@ -58,13 +61,16 @@ public class Dnrpa {
                     break;
                 case 4:
                     System.out.println("\n***Gestion de cambio  de propietario***");
-                        cambiarElPropietario();
+                    cambiarElPropietario();
                     break;
+                case 5:
+                    System.out.println("\n***Dar de alta un automotor***");
 
 
-
+                    break;
                 default:
                     System.out.println("Introduzca una opcion correcta");
+                    darAltaAutomotor();
                     break;
 
 
@@ -240,7 +246,67 @@ public class Dnrpa {
     }
 
     private void darAltaAutomotor(){
+        System.out.print("Indique la denominacion del registro seccional donde va a dar de alta el automotor: ");
+        String denominacion = sc.nextLine();
 
+        System.out.print("Introduzco el codigo postal donde se encuentra el registro seccional: ");
+        Integer codPostal = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Ingrese el nombre del propietario del automotor: ");
+        String nombrePropietario = sc.nextLine();
+
+
+        System.out.print("Ingrese la provincia donde se encuentra el registro: ");
+        String provincia = sc.nextLine();
+
+        System.out.print("Ingrese la localidad: ");
+        String localidad = sc.nextLine();
+
+        System.out.print("Indique que uso le va a dar: ");
+        Uso uso = Uso.valueOf(sc.nextLine());
+
+        System.out.print("Marca: ");
+        String marca = sc.nextLine();
+
+        System.out.print("Modelo: ");
+        String modelo = sc.nextLine();
+
+        System.out.println("Anio: ");
+        String anio = sc.nextLine();
+
+
+
+        Boolean isAlta = true;
+
+        do {
+            System.out.println("Ingrese el tipo de automotor que desea dar de alta: ");
+            System.out.println("1.Auto");
+            System.out.println("2.Auto electrico");
+            System.out.println("3.Camion");
+            System.out.println("4.Colectivo");
+            System.out.println("5.Moto");
+            System.out.println("6.Moto Electrica");
+
+            opcion = Integer.parseInt(sc.nextLine());
+
+            switch (opcion){
+                case 1:
+                    automotor1 = new Auto(
+                            codPostal,
+                            denominacion,
+                            new Persona(nombrePropietario),
+                            uso,
+                            provincia,
+                            localidad,
+                            marca,
+                            modelo,
+                            anio);
+                    isAlta = false;
+
+
+
+            }
+        } while (isAlta);
     }
 
 

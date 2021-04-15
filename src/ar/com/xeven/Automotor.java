@@ -20,6 +20,7 @@ public  class Automotor{
     protected String color;
     protected int potencia;
     protected LocalDate fechaRegistroPropietario;
+    protected LocalDate fechaAltaNuevoPropietario;
     protected Patente patente;
 
 
@@ -27,6 +28,7 @@ public  class Automotor{
     //constructor
     public Automotor(Integer idCP,String competencia, Persona propietario, Uso uso, String provincia, String localidad, String marca, String modelo, String anio) {
         this.idCP = idCP;
+        this.patente = patente;
         this.competencia = competencia;
         this.propietario = propietario;
         this.uso = uso;
@@ -134,6 +136,8 @@ public  class Automotor{
     public LocalDate getFechaRegistroPropietario() {
         return fechaRegistroPropietario;
     }
+
+
 
     public void setFechaRegistroPropietario(LocalDate fechaRegistroPropietario) {
         this.fechaRegistroPropietario = fechaRegistroPropietario;
